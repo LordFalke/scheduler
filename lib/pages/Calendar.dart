@@ -88,7 +88,8 @@ class _CalendarState extends State<Calendar> {
                 room: "I122",
                 blockStart: 1,
                 blockEnd: 6,
-                color: Colors.deepOrange.shade300,
+                color: Colors.deepOrange.shade300.value,
+                dayOfTheWeek: 0,
               ),]);
 
               List<EmptyLesson> day2 = generateLessonTileData([]);

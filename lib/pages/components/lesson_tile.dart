@@ -6,7 +6,7 @@ import "package:scheduler/pages/models/empty_lesson.dart";
 import "../models/lesson.dart";
 
 class LessonTile extends StatelessWidget {
-  final EmptyLesson inputLesson;
+  final Object inputLesson;
   LessonTile({super.key, required this.inputLesson});
 
   @override
@@ -81,7 +81,7 @@ class LessonTile extends StatelessWidget {
           width: MediaQuery.of(context).size.width * .8,
           height: lesson.blockEnd-lesson.blockStart > 1 ? 120.0*(lesson.blockEnd-lesson.blockStart)-20 : 100.0,
           decoration: BoxDecoration(
-              color: lesson.color,
+              color: Color(lesson.color),
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(

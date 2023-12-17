@@ -17,7 +17,8 @@ class Lesson extends EmptyLesson{
   // final String start;
   // final String end;
 
-  final Color color;
+  final int color;
+  int dayOfTheWeek;
 
   Lesson( 
     {
@@ -32,6 +33,7 @@ class Lesson extends EmptyLesson{
       // required this.start, 
       // required this.end,
       required this.color,
+      required this.dayOfTheWeek,
     }
   ) : super();
 }
