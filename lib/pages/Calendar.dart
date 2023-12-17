@@ -23,8 +23,8 @@ class _CalendarState extends State<Calendar> {
   }
 
 
-  List<EmptyLesson> generateLessonTileData(List<Lesson> lessons) {
-    List<EmptyLesson> lessonTileData = [
+  List<Object> generateLessonTileData(List<Lesson> lessons) {
+    List<Object> lessonTileData = [
       EmptyLesson(),
       EmptyLesson(),
       EmptyLesson(),
@@ -79,7 +79,7 @@ class _CalendarState extends State<Calendar> {
             initialIndex: DateTime.now().weekday-1,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              List<EmptyLesson> day1 = generateLessonTileData([Lesson(
+              List<Object> day1 = generateLessonTileData([Lesson(
                 module: "ISI",
                 topic: "Vorlesung",
                 isLab: false,
@@ -92,10 +92,10 @@ class _CalendarState extends State<Calendar> {
                 dayOfTheWeek: 0,
               ),]);
 
-              List<EmptyLesson> day2 = generateLessonTileData([]);
-              List<EmptyLesson> day3 = generateLessonTileData([]);
-              List<EmptyLesson> day4 = generateLessonTileData([]);
-              List<EmptyLesson> day5 = generateLessonTileData([]);
+              List<Object> day2 = generateLessonTileData([]);
+              List<Object> day3 = generateLessonTileData([]);
+              List<Object> day4 = generateLessonTileData([]);
+              List<Object> day5 = generateLessonTileData([]);
 
               var days = [day1, day2, day3, day4, day5];
 

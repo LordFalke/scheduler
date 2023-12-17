@@ -4,7 +4,7 @@ import "package:scheduler/pages/models/empty_lesson.dart";
 import "package:scheduler/pages/models/lesson.dart";
 
 class Day extends StatelessWidget {
-  final List<EmptyLesson> lessons;
+  final List<Object> lessons;
   final int dayOfTheWeek;
   Day({super.key, required this.lessons, required this.dayOfTheWeek});
 

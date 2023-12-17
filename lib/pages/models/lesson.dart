@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'empty_lesson.dart';
 
-class Lesson extends EmptyLesson{
+class Lesson {
   final String module;
   final String topic;
 
