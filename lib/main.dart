@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'pages/Calendar.dart';
 import 'pages/intro_page.dart';
+import 'pages/models/lesson.dart';
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(LessonAdapter());
+  await Hive.openBox("stored_lessons");
+
   runApp(const MainApp());
 }
 

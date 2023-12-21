@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import 'pages/models/lesson.dart';
 
 class Database {
   List selectableLessons = [];
 
+  final _myBox = Hive.box("stored_lessons");
+
   void createInitialData() {
-    
     selectableLessons = [
       Lesson(
         module: "ISI",
@@ -69,5 +71,13 @@ class Database {
         dayOfTheWeek: 4,
       ),
     ];
+  }
+
+  void loadData(){
+    selectableLessons = _myBox.get("selectable_lessons");
+  }
+
+  void updateData(){
+    _myBox.put("selectable_lessons", selectableLessons);
   }
 }
