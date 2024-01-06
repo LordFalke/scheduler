@@ -22,8 +22,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       // home: Calendar(),
-      home: Scaffold(body: LessonSelector(),),
+      // home: Scaffold(body: LessonSelector(),),
+      home: Calendar(),
       debugShowCheckedModeBanner: false,
+      
     );
   }
 }

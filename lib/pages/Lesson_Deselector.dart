@@ -1,20 +1,20 @@
 import "package:flutter/material.dart";
 import "package:hive/hive.dart";
-import "package:scheduler/pages/Calendar.dart";
+import "package:scheduler/pages/components/lesson_removable.dart";
 import "package:scheduler/pages/components/lesson_selectable.dart";
 import "package:scheduler/pages/components/lesson_tile.dart";
 
 import "../database.dart";
 import "models/lesson.dart";
 
-class LessonSelector extends StatefulWidget {
-  const LessonSelector({super.key});
+class LessonDeselector extends StatefulWidget {
+  const LessonDeselector({super.key});
 
   @override
-  State<LessonSelector> createState() => _LessonSelectorState();
+  State<LessonDeselector> createState() => _LessonDeselectorState();
 }
 
-class _LessonSelectorState extends State<LessonSelector> {
+class _LessonDeselectorState extends State<LessonDeselector> {
   final _myBox = Hive.box("stored_lessons");
   Database db = Database();
 
@@ -37,18 +37,16 @@ class _LessonSelectorState extends State<LessonSelector> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
         child: Column(
           children: [
-            
             Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Text(
-                "Lesson Selector",
+                "Lesson Deselector",
                 style: TextStyle(fontSize: 29, fontWeight: FontWeight.bold),
               ),
             ),
@@ -56,16 +54,14 @@ class _LessonSelectorState extends State<LessonSelector> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: ListView.builder(
-                  itemCount: db.selectableLessons.length,
+                  itemCount: db.selectedLessons.length,
                   itemBuilder: (context, index) {
-                    // if (!db.selectedLessons.contains(db.selectableLessons[index])) {
-
-                    return SelectableLesson(
-                      inputLesson: db.selectableLessons[index],
+                    
+                    return RemovableLesson(
+                      inputLesson: db.selectedLessons[index],
                       db: db,
                       refreshPage: refreshPage,
                     );
-                    // }
                   },
                 ),
               ),

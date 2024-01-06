@@ -3,6 +3,8 @@ import "dart:math";
 import "package:flutter/material.dart";
 import "package:hive/hive.dart";
 import "package:scheduler/database.dart";
+import "package:scheduler/pages/Lesson_Menu.dart";
+import "package:scheduler/pages/Lesson_Selector.dart";
 import "package:scheduler/pages/models/lesson.dart";
 import "package:scroll_snap_list/scroll_snap_list.dart";
 
@@ -27,15 +29,11 @@ class _CalendarState extends State<Calendar> {
     });
   }
 
-  late Box<Lesson> test;
   @override
   void initState() {
-    if(_myBox.get("selectable_lessons") == null) {
-      db.createInitialData();
-    } else {
-      db.loadData();
-    }
-    
+    db.loadData();
+    db.loadSelected();
+
     super.initState();
   }
 
@@ -57,10 +55,10 @@ class _CalendarState extends State<Calendar> {
       EmptyLesson(),
       EmptyLesson(),
     ];
-    
+
     List lessons = [];
-    for (var lesson in db.selectableLessons) {
-      if(lesson.dayOfTheWeek == dayIndex) {
+    for (var lesson in db.selectedLessons) {
+      if (lesson.dayOfTheWeek == dayIndex) {
         lessons.add(lesson);
       }
     }
@@ -81,10 +79,21 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LessonMenu())),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+        backgroundColor: Colors.grey.shade900,
+        splashColor: Colors.grey.shade500,
+        elevation: 10,
+        child: Icon(
+          Icons.calendar_today,
+          color: Colors.white,
+        ),
+      ),
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          MaterialButton(onPressed: resetDatabase, color: Colors.red,),
           SizedBox(
             height: 1150,
             child: ScrollSnapList(

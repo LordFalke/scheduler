@@ -182,16 +182,6 @@ class LessonTile extends StatelessWidget {
                     ),
                   ),
                 ),
-
-                // 2nd lesson
-
-                // 3rd lesson
-
-                // 4th lesson
-
-                // 5th lesson
-
-                // 6th lesson
               ],
             ),
           ),

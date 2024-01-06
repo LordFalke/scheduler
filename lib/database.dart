@@ -5,23 +5,23 @@ import 'pages/models/lesson.dart';
 
 class Database {
   List selectableLessons = [];
+  List selectedLessons = [];
 
   final _myBox = Hive.box("stored_lessons");
 
   void createInitialData() {
     selectableLessons = [
       Lesson(
-        module: "ISI",
-        topic: "Vorlesung",
-        isLab: false,
-        labGroup: "none",
-        prof: "Sethmann",
-        room: "I122",
-        blockStart: 1,
-        blockEnd: 2,
-        color: Colors.deepOrange.shade300.value,
-        dayOfTheWeek: 0
-      ),
+          module: "ISI",
+          topic: "Vorlesung",
+          isLab: false,
+          labGroup: "none",
+          prof: "Sethmann",
+          room: "I122",
+          blockStart: 1,
+          blockEnd: 2,
+          color: Colors.deepOrange.shade300.value,
+          dayOfTheWeek: 0),
       Lesson(
         module: "MFORM",
         topic: "Vorlesung",
@@ -71,13 +71,33 @@ class Database {
         dayOfTheWeek: 4,
       ),
     ];
+    updateData();
   }
 
-  void loadData(){
+  void loadData() {
     selectableLessons = _myBox.get("selectable_lessons");
   }
 
-  void updateData(){
+  void updateData() {
     _myBox.put("selectable_lessons", selectableLessons);
+  }
+
+  void loadSelected() {
+    if (_myBox.get("selected_lessons") != null) {
+      selectedLessons = _myBox.get("selected_lessons");
+    }
+  }
+
+  void updateSelected() {
+    _myBox.put("selected_lessons", selectedLessons);
+  }
+
+  void clearSelected() {
+    selectedLessons = [];
+    updateSelected();
+  }
+
+  void deleteDatabase() {
+    _myBox.deleteFromDisk();
   }
 }

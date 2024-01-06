@@ -20,7 +20,7 @@ class Day extends StatelessWidget {
         return "Donnerstag";
       case 4:
         return "Freitag";
-      default: 
+      default:
         return "null";
     }
   }
@@ -28,8 +28,9 @@ class Day extends StatelessWidget {
   String getDate() {
     String date = "";
     DateTime currentDate = DateTime.now();
-    currentDate = currentDate.subtract(Duration(days: currentDate.weekday-dayOfTheWeek-1));
-    
+    currentDate = currentDate
+        .subtract(Duration(days: currentDate.weekday - dayOfTheWeek - 1));
+
     // day of the month
 
     date += "${currentDate.day}. ";

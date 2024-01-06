@@ -4,23 +4,25 @@ import 'package:hive/hive.dart';
 import 'package:scheduler/database.dart';
 import 'package:scheduler/pages/models/lesson.dart';
 
-class SelectableLesson extends StatelessWidget {
+class RemovableLesson extends StatelessWidget {
   Database db;
   final Lesson inputLesson;
   VoidCallback refreshPage;
-  SelectableLesson({
+  RemovableLesson({
     super.key,
     required this.inputLesson,
     required this.db,
     required this.refreshPage,
   });
 
-  _addSelected() {
-    db.selectedLessons.add(inputLesson);
-    db.selectableLessons.remove(inputLesson);
-    db.updateSelected();
-    db.updateData();
-    refreshPage();
+  _removeSelected() {
+    if (db.selectedLessons.contains(inputLesson)) {
+      db.selectedLessons.remove(inputLesson);
+      db.selectableLessons.add(inputLesson);
+      db.updateSelected();
+      db.updateData();
+      refreshPage();
+    }
   }
 
   @override
@@ -77,14 +79,14 @@ class SelectableLesson extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: _addSelected,
+                onPressed: _removeSelected,
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color>(Colors.white),
                   fixedSize: MaterialStateProperty.all(Size(64, 64)),
                 ),
                 child: const Icon(
-                  Icons.add,
+                  Icons.delete_outline,
                   color: Colors.black,
                 ),
               ),
