@@ -30,6 +30,9 @@ class Lesson {
   @HiveField(9)
   int dayOfTheWeek;
 
+  @HiveField(10)
+  List? labs;
+
   Lesson( 
     {
       required this.module, 
@@ -44,6 +47,8 @@ class Lesson {
       // required this.end,
       required this.color,
       required this.dayOfTheWeek,
+      this.labs,
     }
   ) : super();
+  
 }

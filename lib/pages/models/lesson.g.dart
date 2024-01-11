@@ -27,13 +27,14 @@ class LessonAdapter extends TypeAdapter<Lesson> {
       blockEnd: fields[7] as int,
       color: fields[8] as int,
       dayOfTheWeek: fields[9] as int,
+      labs: (fields[10] as List?)?.cast<dynamic>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Lesson obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(11)
       ..writeByte(0)
       ..write(obj.module)
       ..writeByte(1)
@@ -53,7 +54,9 @@ class LessonAdapter extends TypeAdapter<Lesson> {
       ..writeByte(8)
       ..write(obj.color)
       ..writeByte(9)
-      ..write(obj.dayOfTheWeek);
+      ..write(obj.dayOfTheWeek)
+      ..writeByte(10)
+      ..write(obj.labs);
   }
 
   @override

@@ -61,6 +61,14 @@ class _CalendarState extends State<Calendar> {
       if (lesson.dayOfTheWeek == dayIndex) {
         lessons.add(lesson);
       }
+
+      if (lesson.labs != null) {
+        for (var labLesson in lesson.labs) {
+          if (labLesson.dayOfTheWeek == dayIndex) {
+            lessons.add(labLesson);
+          }
+        }
+      }
     }
 
     for (var lesson in lessons) {

@@ -21,7 +21,8 @@ class Database {
           blockStart: 1,
           blockEnd: 2,
           color: Colors.deepOrange.shade300.value,
-          dayOfTheWeek: 0),
+          dayOfTheWeek: 0,
+          labs: [Lesson(module: "ISI", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Kathmann", room: "I222", blockStart: 3, blockEnd: 5, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 1)]),
       Lesson(
         module: "MFORM",
         topic: "Vorlesung",
