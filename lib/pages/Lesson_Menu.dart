@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:scheduler/pages/Calendar.dart';
 import 'package:scheduler/pages/Lesson_Selector.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'Lesson_Deselector.dart';
 
 class LessonMenu extends StatefulWidget {
-  const LessonMenu({super.key});
+  VoidCallback refreshPage;
+  LessonMenu({super.key, required this.refreshPage});
 
   @override
   State<LessonMenu> createState() => _LessonMenuState();
@@ -19,12 +21,13 @@ class _LessonMenuState extends State<LessonMenu> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      
       children: [
         PageView(
           controller: controller,
           children: [
-            LessonSelector(),
-            LessonDeselector(),
+            LessonSelector(refreshPage: widget.refreshPage),
+            LessonDeselector(refreshPage: widget.refreshPage),
           ],
         ),
         Align(

@@ -8,11 +8,13 @@ class RemovableLesson extends StatelessWidget {
   Database db;
   final Lesson inputLesson;
   VoidCallback refreshPage;
+  VoidCallback refreshMenu;
   RemovableLesson({
     super.key,
     required this.inputLesson,
     required this.db,
     required this.refreshPage,
+    required this.refreshMenu,
   });
 
   _removeSelected() {
@@ -22,6 +24,7 @@ class RemovableLesson extends StatelessWidget {
       db.updateSelected();
       db.updateData();
       refreshPage();
+      refreshMenu();
     }
   }
 

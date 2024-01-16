@@ -8,11 +8,13 @@ class SelectableLesson extends StatelessWidget {
   Database db;
   final Lesson inputLesson;
   VoidCallback refreshPage;
+  VoidCallback refreshMenu;
   SelectableLesson({
     super.key,
     required this.inputLesson,
     required this.db,
     required this.refreshPage,
+    required this.refreshMenu,
   });
 
   _addSelected() {
@@ -21,6 +23,7 @@ class SelectableLesson extends StatelessWidget {
     db.updateSelected();
     db.updateData();
     refreshPage();
+    refreshMenu();
   }
 
   @override

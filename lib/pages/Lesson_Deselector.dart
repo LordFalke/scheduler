@@ -8,7 +8,8 @@ import "../database.dart";
 import "models/lesson.dart";
 
 class LessonDeselector extends StatefulWidget {
-  const LessonDeselector({super.key});
+  VoidCallback refreshPage;
+  LessonDeselector({super.key, required this.refreshPage});
 
   @override
   State<LessonDeselector> createState() => _LessonDeselectorState();
@@ -17,6 +18,10 @@ class LessonDeselector extends StatefulWidget {
 class _LessonDeselectorState extends State<LessonDeselector> {
   final _myBox = Hive.box("stored_lessons");
   Database db = Database();
+
+  void refreshMenu() {
+    setState(() {});
+  }
 
   @override
   void initState() {
@@ -28,10 +33,6 @@ class _LessonDeselectorState extends State<LessonDeselector> {
 
     db.loadSelected();
     super.initState();
-  }
-
-  void refreshPage() {
-    setState(() {});
   }
 
   @override
@@ -60,7 +61,8 @@ class _LessonDeselectorState extends State<LessonDeselector> {
                     return RemovableLesson(
                       inputLesson: db.selectedLessons[index],
                       db: db,
-                      refreshPage: refreshPage,
+                      refreshPage: widget.refreshPage,
+                      refreshMenu: refreshMenu,
                     );
                   },
                 ),

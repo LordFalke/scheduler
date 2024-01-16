@@ -22,7 +22,10 @@ class Database {
           blockEnd: 2,
           color: Colors.deepOrange.shade300.value,
           dayOfTheWeek: 0,
-          labs: [Lesson(module: "ISI", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Kathmann", room: "I222", blockStart: 3, blockEnd: 5, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 1)]),
+          labs: [
+            Lesson(module: "ISI", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Kathmann", room: "I222", blockStart: 3, blockEnd: 5, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 1),
+            Lesson(module: "ISI", topic: "Labor X/Y", isLab: true, labGroup: "X/Y", prof: "GEN_ZAN", room: "I222", blockStart: 2, blockEnd: 4, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 0),
+            ]),
       Lesson(
         module: "MFORM",
         topic: "Vorlesung",
@@ -34,6 +37,11 @@ class Database {
         blockEnd: 1,
         color: Colors.blue.shade300.value,
         dayOfTheWeek: 1,
+        labs: [
+          Lesson(module: "MFORM", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Krug", room: "I234", blockStart: 1, blockEnd: 2, color: Colors.blue.shade300.value, dayOfTheWeek: 1),
+          Lesson(module: "MFORM", topic: "Labor Y", isLab: true, labGroup: "Y", prof: "Krug", room: "I234", blockStart: 2, blockEnd: 3, color: Colors.blue.shade300.value, dayOfTheWeek: 1),
+          Lesson(module: "MFORM", topic: "Labor X", isLab: true, labGroup: "X", prof: "Krug", room: "I234", blockStart: 3, blockEnd: 4, color: Colors.blue.shade300.value, dayOfTheWeek: 1),
+        ]
       ),
       Lesson(
         module: "SWT",
@@ -46,6 +54,10 @@ class Database {
         blockEnd: 2,
         color: Colors.deepPurple.shade300.value,
         dayOfTheWeek: 2,
+        labs: [
+          Lesson(module: "SWT", topic: "Labor X/Y", isLab: true, labGroup: "X/Y", prof: "Teschke", room: "I032C", blockStart: 3, blockEnd: 5, color: Colors.deepPurple.shade300.value, dayOfTheWeek: 2),
+          Lesson(module: "SWT", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Teschke", room: "I032C", blockStart: 3, blockEnd: 5, color: Colors.deepPurple.shade300.value, dayOfTheWeek: 3),
+        ]
       ),
       Lesson(
         module: "HCI",
@@ -58,6 +70,11 @@ class Database {
         blockEnd: 3,
         color: Colors.green.shade300.value,
         dayOfTheWeek: 3,
+        labs: [
+          Lesson(module: "HCI", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Paelke", room: "I220", blockStart: 1, blockEnd: 2, color: Colors.green.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "HCI", topic: "Labor X", isLab: true, labGroup: "X", prof: "Paelke", room: "I220", blockStart: 3, blockEnd: 4, color: Colors.green.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "HCI", topic: "Labor Y", isLab: true, labGroup: "Y", prof: "Paelke", room: "I220", blockStart: 4, blockEnd: 5, color: Colors.green.shade300.value, dayOfTheWeek: 3),
+        ]
       ),
       Lesson(
         module: "WPM",

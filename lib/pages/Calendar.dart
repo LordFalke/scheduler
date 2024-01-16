@@ -31,8 +31,16 @@ class _CalendarState extends State<Calendar> {
 
   @override
   void initState() {
-    db.loadData();
-    db.loadSelected();
+    if(_myBox.get("selectable_lessons") == null) {
+      db.createInitialData();
+      // db.updateData();
+    } else {
+      db.loadData();
+      db.loadSelected();  
+    }
+
+
+    
 
     super.initState();
   }
@@ -42,6 +50,10 @@ class _CalendarState extends State<Calendar> {
       db.createInitialData();
     });
     db.updateData();
+  }
+
+  void refreshPage() {
+    setState(() {});
   }
 
   List<Object> generateLessonTileData(int dayIndex) {
@@ -87,15 +99,16 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.endContained,
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LessonMenu())),
+            context, MaterialPageRoute(builder: (context) => LessonMenu(refreshPage: refreshPage,))),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
         backgroundColor: Colors.grey.shade900,
-        splashColor: Colors.grey.shade500,
+        splashColor: const Color.fromRGBO(158, 158, 158, 1),
         elevation: 10,
         child: Icon(
-          Icons.calendar_today,
+          Icons.add,
           color: Colors.white,
         ),
       ),
