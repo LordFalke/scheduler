@@ -29,6 +29,8 @@ class _LessonSelectorState extends State<LessonSelector> {
       db.createInitialData();
     } else {
       db.loadData();
+      db.loadLabs();
+      db.loadSelected();
     }
 
     db.loadSelected();
@@ -64,7 +66,7 @@ class _LessonSelectorState extends State<LessonSelector> {
                   itemCount: db.selectableLessons.length,
                   itemBuilder: (context, index) {
                     // if (!db.selectedLessons.contains(db.selectableLessons[index])) {
-
+                    
                     return SelectableLesson(
                       inputLesson: db.selectableLessons[index],
                       db: db,

@@ -36,20 +36,21 @@ class _CalendarState extends State<Calendar> {
       // db.updateData();
     } else {
       db.loadData();
-      db.loadSelected();  
+      db.loadSelected(); 
+      db.loadLabs(); 
     }
 
-
     
-
     super.initState();
   }
 
   void resetDatabase() {
     setState(() {
+      db.deleteDatabase();
       db.createInitialData();
     });
     db.updateData();
+    refreshPage();
   }
 
   void refreshPage() {
@@ -74,12 +75,18 @@ class _CalendarState extends State<Calendar> {
         lessons.add(lesson);
       }
 
-      if (lesson.labs != null) {
-        for (var labLesson in lesson.labs) {
-          if (labLesson.dayOfTheWeek == dayIndex) {
-            lessons.add(labLesson);
-          }
-        }
+      // if (lesson.labs != null) {
+      //   for (var labLesson in lesson.labs) {
+      //     if (labLesson.dayOfTheWeek == dayIndex) {
+      //       lessons.add(labLesson);
+      //     }
+      //   }
+      // }
+    }
+
+    for(var lab in db.selectedLabs) {
+      if(lab.dayOfTheWeek == dayIndex) {
+        lessons.add(lab);
       }
     }
 
@@ -115,6 +122,22 @@ class _CalendarState extends State<Calendar> {
       backgroundColor: Colors.white,
       body: ListView(
         children: [
+
+          // reset database
+          // GestureDetector(
+          //   onTap: () {
+          //     resetDatabase();
+          //   },
+          //   child: SizedBox(
+          //     height: 50,
+          //     child: Container(
+          //       decoration: BoxDecoration(
+          //         color: Colors.red
+          //       ),
+          //     ),
+          //   ),
+          // ),
+
           SizedBox(
             height: 1150,
             child: ScrollSnapList(

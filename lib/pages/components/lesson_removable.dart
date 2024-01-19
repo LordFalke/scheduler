@@ -21,6 +21,9 @@ class RemovableLesson extends StatelessWidget {
     if (db.selectedLessons.contains(inputLesson)) {
       db.selectedLessons.remove(inputLesson);
       db.selectableLessons.add(inputLesson);
+      db.selectedLabs.removeWhere((lab) => lab.module == inputLesson.module);
+
+      db.updateLabs();
       db.updateSelected();
       db.updateData();
       refreshPage();

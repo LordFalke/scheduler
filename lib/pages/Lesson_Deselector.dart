@@ -29,9 +29,10 @@ class _LessonDeselectorState extends State<LessonDeselector> {
       db.createInitialData();
     } else {
       db.loadData();
+      db.loadLabs();
+      db.loadSelected();
     }
 
-    db.loadSelected();
     super.initState();
   }
 
