@@ -23,6 +23,7 @@ class SelectableLesson extends StatelessWidget {
 
     Lesson selectedLab = inputLesson.labs![labGroup];
     db.selectedLabs.add(selectedLab);
+    db.updateLabs();
 
 
     db.updateSelected();
@@ -44,7 +45,64 @@ class SelectableLesson extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10.0),
-      child: Container(
+      child: inputLesson.labs!.isEmpty ? 
+      GestureDetector(
+        onTap: _addOnlyLecture,
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+              color: Color(inputLesson.color),
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade200,
+                  offset: Offset(0, 10),
+                ),
+              ]),
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Row(children: [
+              Expanded(
+                flex: 5,
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        inputLesson.prof,
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        inputLesson.room,
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        inputLesson.module,
+                        style: GoogleFonts.inter(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              
+            ]),
+          ),
+        ),
+      )
+      : 
+      Container(
         height: 100,
         decoration: BoxDecoration(
             color: Color(inputLesson.color),
@@ -138,7 +196,7 @@ class SelectableLesson extends StatelessWidget {
             ),
           ]),
         ),
-      ),
+      )
     );
   }
 }

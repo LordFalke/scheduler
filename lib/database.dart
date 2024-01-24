@@ -92,6 +92,91 @@ class Database {
         dayOfTheWeek: 4,
         labs: []
       ),
+      Lesson(
+        module: "MI1",
+        topic: "Vorlesung",
+        isLab: false,
+        labGroup: "none",
+        prof: "Tannert",
+        room: "I032B",
+        blockStart: 0,
+        blockEnd: 1,
+        color: Colors.cyan.shade300.value,
+        dayOfTheWeek: 1,
+        labs: [
+          Lesson(module: "MI1", topic: "Labor A", isLab: true, labGroup: "A", prof: "Tannert", room: "I221", blockStart: 1, blockEnd: 2, color: Colors.cyan.shade300.value, dayOfTheWeek: 1),
+          Lesson(module: "MI1", topic: "Labor B", isLab: true, labGroup: "B", prof: "Tannert", room: "I221", blockStart: 2, blockEnd: 3, color: Colors.cyan.shade300.value, dayOfTheWeek: 1),
+          Lesson(module: "MI1", topic: "Labor C", isLab: true, labGroup: "C", prof: "Tannert", room: "I221", blockStart: 3, blockEnd: 4, color: Colors.cyan.shade300.value, dayOfTheWeek: 1),
+        ]
+      ),
+      Lesson(
+        module: "MATHE1",
+        topic: "Vorlesung",
+        isLab: false,
+        labGroup: "none",
+        prof: "HBertram",
+        room: "I012",
+        blockStart: 1,
+        blockEnd: 2,
+        color: Colors.indigo.shade300.value,
+        dayOfTheWeek: 0,
+        labs: [
+          Lesson(module: "MATHE1", topic: "Labor A", isLab: true, labGroup: "A", prof: "HBertram", room: "I220", blockStart: 0, blockEnd: 1, color: Colors.indigo.shade300.value, dayOfTheWeek: 0),
+          Lesson(module: "MATHE1", topic: "Labor B", isLab: true, labGroup: "B", prof: "HBertram", room: "I220", blockStart: 2, blockEnd: 3, color: Colors.indigo.shade300.value, dayOfTheWeek: 0),
+          Lesson(module: "MATHE1", topic: "Labor C", isLab: true, labGroup: "C", prof: "HBertram", room: "I220", blockStart: 3, blockEnd: 4, color: Colors.indigo.shade300.value, dayOfTheWeek: 0),
+        ]
+      ),
+      Lesson(
+        module: "INF1",
+        topic: "Vorlesung",
+        isLab: false,
+        labGroup: "none",
+        prof: "Eirund",
+        room: "I032B",
+        blockStart: 1,
+        blockEnd: 2,
+        color: Colors.amber.shade300.value,
+        dayOfTheWeek: 2,
+        labs: [
+          Lesson(module: "INF1", topic: "Labor A", isLab: true, labGroup: "A", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 3, color: Colors.amber.shade300.value, dayOfTheWeek: 2),
+          Lesson(module: "INF1", topic: "Labor B", isLab: true, labGroup: "B", prof: "Eirund", room: "I221", blockStart: 3, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 2),
+          Lesson(module: "INF1", topic: "Labor C", isLab: true, labGroup: "C", prof: "Eirund", room: "I220", blockStart: 2, blockEnd: 3, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
+        ]
+      ),
+      Lesson(
+        module: "PROG1",
+        topic: "Vorlesung",
+        isLab: false,
+        labGroup: "none",
+        prof: "Eirund",
+        room: "I012",
+        blockStart: 1,
+        blockEnd: 2,
+        color: Colors.amber.shade300.value,
+        dayOfTheWeek: 3,
+        labs: [
+          Lesson(module: "INF1", topic: "Labor A", isLab: true, labGroup: "A", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "INF1", topic: "Labor B", isLab: true, labGroup: "B", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "INF1", topic: "Labor C", isLab: true, labGroup: "C", prof: "Eirund", room: "I032C", blockStart: 2, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
+        ]
+      ),
+      Lesson(
+        module: "GEST1",
+        topic: "Vorlesung",
+        isLab: false,
+        labGroup: "none",
+        prof: "Teufel",
+        room: "E509",
+        blockStart: 1,
+        blockEnd: 2,
+        color: Colors.purple.shade300.value,
+        dayOfTheWeek: 4,
+        labs: [
+          Lesson(module: "GEST1", topic: "Labor AB", isLab: true, labGroup: "AB", prof: "Hölscher", room: "E405", blockStart: 2, blockEnd: 3, color: Colors.purple.shade300.value, dayOfTheWeek: 4),
+          Lesson(module: "GEST1", topic: "Labor CD", isLab: true, labGroup: "CD", prof: "Teufel", room: "E406", blockStart: 2, blockEnd: 3, color: Colors.purple.shade300.value, dayOfTheWeek: 4),
+
+        ]
+      ),
     ];
     updateData();
   }
