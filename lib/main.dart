@@ -6,7 +6,7 @@ import 'pages/Calendar.dart';
 import 'pages/intro_page.dart';
 import 'pages/models/lesson.dart';
 
-void main() async{
+void main() async { 
   await Hive.initFlutter();
 
   Hive.registerAdapter(LessonAdapter());

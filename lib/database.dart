@@ -11,7 +11,10 @@ class Database {
   final _myBox = Hive.box("stored_lessons");
 
   void createInitialData() {
-    selectableLessons = [
+    selectedLabs = [
+      Lesson(module: "ISI", topic: "Labor Z", isLab: true, labGroup: "Z", prof: "Kathmann", room: "I222", blockStart: 2, blockEnd: 4, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 1),
+    ];
+    selectedLessons = [
       Lesson(
           module: "ISI",
           topic: "Vorlesung",
@@ -28,6 +31,8 @@ class Database {
             Lesson(module: "ISI", topic: "Labor Y", isLab: true, labGroup: "Y", prof: "GEN_ZAN", room: "I222", blockStart: 2, blockEnd: 4, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 0),
             Lesson(module: "ISI", topic: "Labor X", isLab: true, labGroup: "X", prof: "GEN_ZAN", room: "I222", blockStart: 2, blockEnd: 4, color: Colors.deepOrange.shade300.value, dayOfTheWeek: 0),
             ]),
+    ];
+    selectableLessons = [
       Lesson(
         module: "MFORM",
         topic: "Vorlesung",
@@ -152,12 +157,12 @@ class Database {
         room: "I012",
         blockStart: 1,
         blockEnd: 2,
-        color: Colors.amber.shade300.value,
+        color: Colors.orange.shade300.value,
         dayOfTheWeek: 3,
         labs: [
-          Lesson(module: "INF1", topic: "Labor A", isLab: true, labGroup: "A", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
-          Lesson(module: "INF1", topic: "Labor B", isLab: true, labGroup: "B", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
-          Lesson(module: "INF1", topic: "Labor C", isLab: true, labGroup: "C", prof: "Eirund", room: "I032C", blockStart: 2, blockEnd: 4, color: Colors.amber.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "PROG1", topic: "Labor A", isLab: true, labGroup: "A", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 4, color: Colors.orange.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "PROG1", topic: "Labor B", isLab: true, labGroup: "B", prof: "Eirund", room: "I221", blockStart: 2, blockEnd: 4, color: Colors.orange.shade300.value, dayOfTheWeek: 3),
+          Lesson(module: "PROG1", topic: "Labor C", isLab: true, labGroup: "C", prof: "Eirund", room: "I032C", blockStart: 2, blockEnd: 4, color: Colors.orange.shade300.value, dayOfTheWeek: 3),
         ]
       ),
       Lesson(
@@ -177,8 +182,23 @@ class Database {
 
         ]
       ),
+      Lesson(
+        module: "ENGL1",
+        topic: "Labor",
+        isLab: false,
+        labGroup: "Z",
+        prof: "Shillington",
+        room: "online",
+        blockStart: 3,
+        blockEnd: 5,
+        color: Colors.green.shade300.value,
+        dayOfTheWeek: 2,
+        labs: []
+      ),
     ];
     updateData();
+    updateLabs();
+    updateSelected();
   }
 
   void loadData() {

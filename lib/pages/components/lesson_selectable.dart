@@ -25,7 +25,6 @@ class SelectableLesson extends StatelessWidget {
     db.selectedLabs.add(selectedLab);
     db.updateLabs();
 
-
     db.updateSelected();
     db.updateData();
     refreshPage();
@@ -44,159 +43,165 @@ class SelectableLesson extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: inputLesson.labs!.isEmpty ? 
-      GestureDetector(
-        onTap: _addOnlyLecture,
-        child: Container(
-          height: 100,
-          decoration: BoxDecoration(
-              color: Color(inputLesson.color),
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade200,
-                  offset: Offset(0, 10),
-                ),
-              ]),
-          child: Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Row(children: [
-              Expanded(
-                flex: 5,
+        padding: const EdgeInsets.all(10.0),
+        child: inputLesson.labs!.isEmpty
+            ? GestureDetector(
+                onTap: _addOnlyLecture,
                 child: Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        inputLesson.prof,
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                  height: 100,
+                  decoration: BoxDecoration(
+                      color: Color(inputLesson.color),
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade200,
+                          offset: Offset(0, 10),
+                        ),
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Row(children: [
+                      Expanded(
+                        flex: 5,
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                inputLesson.module,
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                inputLesson.room,
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Text(
+                                inputLesson.prof,
+                                style: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      Text(
-                        inputLesson.room,
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        inputLesson.module,
-                        style: GoogleFonts.inter(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
+                    ]),
                   ),
                 ),
-              ),
-              
-            ]),
-          ),
-        ),
-      )
-      : 
-      Container(
-        height: 100,
-        decoration: BoxDecoration(
-            color: Color(inputLesson.color),
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade200,
-                offset: Offset(0, 10),
-              ),
-            ]),
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(children: [
-            Expanded(
-              flex: 5,
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      inputLesson.prof,
-                      style: GoogleFonts.inter(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
+              )
+            : Container(
+                height: 100,
+                decoration: BoxDecoration(
+                    color: Color(inputLesson.color),
+                    borderRadius: BorderRadius.circular(25),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade200,
+                        offset: Offset(0, 10),
                       ),
-                    ),
-                    Text(
-                      inputLesson.room,
-                      style: GoogleFonts.inter(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      inputLesson.module,
-                      style: GoogleFonts.inter(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 4,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  inputLesson.labs != null ? inputLesson.labs!.length : 0,
-                  (index) {
-                    return GestureDetector(
-                      onTap: () {
-                        _addSelected(index);
-                      },
+                    ]),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Row(children: [
+                    Expanded(
+                      flex: 5,
                       child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        width: inputLesson.labs!.length > 2 && index == 1
-                            ? 30
-                            : 50,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(index == 0 ? 20 : 0),
-                            bottomLeft: Radius.circular(index == 0 ? 20 : 0),
-                            topRight: Radius.circular(
-                                index == inputLesson.labs!.length - 1 ? 20 : 0),
-                            bottomRight: Radius.circular(
-                                index == inputLesson.labs!.length - 1 ? 20 : 0),
-                          ),
-                        ),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            inputLesson.labs![index].labGroup,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              inputLesson.prof,
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
                             ),
-                          ),
+                            Text(
+                              inputLesson.room,
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                            Text(
+                              inputLesson.module,
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  },
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          inputLesson.labs != null
+                              ? inputLesson.labs!.length
+                              : 0,
+                          (index) {
+                            return GestureDetector(
+                              onTap: () {
+                                _addSelected(index);
+                              },
+                              child: Container(
+                                margin: EdgeInsets.symmetric(vertical: 5),
+                                width:
+                                    inputLesson.labs!.length > 2 && index == 1
+                                        ? 30
+                                        : 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft:
+                                        Radius.circular(index == 0 ? 20 : 0),
+                                    bottomLeft:
+                                        Radius.circular(index == 0 ? 20 : 0),
+                                    topRight: Radius.circular(
+                                        index == inputLesson.labs!.length - 1
+                                            ? 20
+                                            : 0),
+                                    bottomRight: Radius.circular(
+                                        index == inputLesson.labs!.length - 1
+                                            ? 20
+                                            : 0),
+                                  ),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    inputLesson.labs![index].labGroup,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ]),
                 ),
-              ),
-            ),
-          ]),
-        ),
-      )
-    );
+              ));
   }
 }
