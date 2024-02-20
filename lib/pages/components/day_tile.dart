@@ -4,7 +4,7 @@ import "package:scheduler/pages/models/empty_lesson.dart";
 import "package:scheduler/pages/models/lesson.dart";
 
 class Day extends StatelessWidget {
-  final List<EmptyLesson> lessons;
+  final List<Object> lessons;
   final int dayOfTheWeek;
   Day({super.key, required this.lessons, required this.dayOfTheWeek});
 
@@ -20,7 +20,7 @@ class Day extends StatelessWidget {
         return "Donnerstag";
       case 4:
         return "Freitag";
-      default: 
+      default:
         return "null";
     }
   }
@@ -28,8 +28,9 @@ class Day extends StatelessWidget {
   String getDate() {
     String date = "";
     DateTime currentDate = DateTime.now();
-    currentDate = currentDate.subtract(Duration(days: currentDate.weekday-dayOfTheWeek-1));
-    
+    currentDate = currentDate
+        .subtract(Duration(days: currentDate.weekday - dayOfTheWeek - 1));
+
     // day of the month
 
     date += "${currentDate.day}. ";
